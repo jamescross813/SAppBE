@@ -8,5 +8,5 @@
 
 user = User.create(username: "James", password_digest: "1234")
 project = Project.create(title: "ToDo app", due_date: "12/23/2021", read_me: "An app to track what projects you're working on and keep track of tasks still do to/add new tasks and notes when away from the computer", user: User.find_by(id: 1))
-to_do = ToDo.create(to_do: "add better relationships", do_date: "12/21/2022", project_id: Project.find_by(id: 1))
-note = Note.create(note: "Might need to spend some time planning out relationships better", project_id: Project.find_by(id: 1))
+to_do = ToDo.create(to_do: "add better relationships", do_date: "12/21/2022", project_id: Project.find_by_id(1))
+note = Note.create(note: "Might need to spend some time planning out relationships better", project_id: Project.find_by_id(1))
