@@ -18,6 +18,11 @@ class ToDosController < ApplicationController
             render json: {message: "Could not find that to do, try again!"}
         end
     end
+
+    def index
+        todos = ToDo.all
+        render json: todos
+    end
    
     private
     
