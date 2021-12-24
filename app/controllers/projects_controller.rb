@@ -10,6 +10,16 @@ class ProjectsController < ApplicationController
         end
     end
 
+    def show
+        project = Project.find_by(id: params[:id])
+        if project
+            render json: project,
+            except: [:create_at, :updated_at]
+        else 
+            render json: {message: "Could not find that project, try again!"}
+        end
+    end
+
     private
     
     def project_params
