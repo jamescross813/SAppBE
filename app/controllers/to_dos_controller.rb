@@ -9,7 +9,16 @@ class ToDosController < ApplicationController
         end
     end
 
-    
+    def show
+        todo = ToDo.find_by(id: params[:id])
+        if todo
+            render json: todo,
+            except: [:create_at, :updated_at]
+        else 
+            render json: {message: "Could not find that to do, try again!"}
+        end
+    end
+   
     private
     
     def todo_params
