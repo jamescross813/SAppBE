@@ -20,6 +20,12 @@ class NotesController < ApplicationController
         end
     end
 
+    def index
+        notes = Note.all
+        render json: notes,
+        except: [created_at, :updated_at]
+    end
+
     private
 
     def notes_params
