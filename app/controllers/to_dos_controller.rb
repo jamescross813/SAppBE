@@ -3,7 +3,7 @@ class ToDosController < ApplicationController
         todo = ToDo.new(todo_params)
         if todo.save
             render json: todo,
-            except: [:create_at, :updated_at]
+            except: [:created_at, :updated_at]
         else
             render json:{message: "Could not add a to do, try again please!"}
         end
@@ -13,7 +13,7 @@ class ToDosController < ApplicationController
         todo = ToDo.find_by(id: params[:id])
         if todo
             render json: todo,
-            except: [:create_at, :updated_at]
+            except: [:created_at, :updated_at]
         else 
             render json: {message: "Could not find that to do, try again!"}
         end
