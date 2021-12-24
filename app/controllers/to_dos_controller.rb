@@ -34,6 +34,11 @@ class ToDosController < ApplicationController
             render json:{message: "Couldn't update at this time, try again later"}
         end
     end
+
+    def destroy
+        todo = Todo.find_by(id: params[:id])
+        todo.destroy
+    end
    
     private
     
