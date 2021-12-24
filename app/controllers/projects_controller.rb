@@ -20,6 +20,12 @@ class ProjectsController < ApplicationController
         end
     end
 
+    def index
+        projects = Project.all
+        render json: projects,
+        except: [:create_at, :updated_at]
+    end
+
     private
     
     def project_params
