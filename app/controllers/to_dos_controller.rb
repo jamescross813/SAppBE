@@ -23,6 +23,17 @@ class ToDosController < ApplicationController
         todos = ToDo.all
         render json: todos
     end
+
+    def update
+        todo = ToDo.find_by(id: params[:id])
+        todo.update(todo_params)
+        if todo.save
+            render json: todo,
+            except: [created_at, :updated_at]
+        else
+            render json:{message: "Couldn't update at this time, try again later"}
+        end
+    end
    
     private
     
