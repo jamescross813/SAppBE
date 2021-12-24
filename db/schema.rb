@@ -10,43 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_21_175656) do
+ActiveRecord::Schema.define(version: 0) do
 
-  create_table "notes", force: :cascade do |t|
-    t.text "note"
-    t.integer "project_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["project_id"], name: "index_notes_on_project_id"
-  end
-
-  create_table "projects", force: :cascade do |t|
-    t.string "title"
-    t.string "due_date"
-    t.text "read_me"
-    t.integer "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_projects_on_user_id"
-  end
-
-  create_table "to_dos", force: :cascade do |t|
-    t.string "to_do"
-    t.string "do_date"
-    t.integer "project_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["project_id"], name: "index_to_dos_on_project_id"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "username"
-    t.string "password_digest"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  add_foreign_key "notes", "projects"
-  add_foreign_key "projects", "users"
-  add_foreign_key "to_dos", "projects"
 end
