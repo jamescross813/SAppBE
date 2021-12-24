@@ -1,2 +1,18 @@
 class ToDosController < ApplicationController
+    def create
+        todo = ToDo.new(todo_params)
+        if todo.save
+            render json: todo,
+            except: [:create_at, :updated_at]
+        else
+            render json:{message: "Could not add a to do, try again please!"}
+        end
+    end
+
+    
+    private
+    
+    def todo_params
+        params.require(:todo).permit(:title, :project_id)
+    end
 end
