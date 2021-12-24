@@ -26,6 +26,16 @@ class NotesController < ApplicationController
         except: [created_at, :updated_at]
     end
 
+    def update
+        note = Note.find_by(id: params[:id])
+        note.update(notes_params)
+        if note.save
+            render json: note
+        else
+            render json: {message: "Could not update at this time"}
+        end
+    end
+
     private
 
     def notes_params
