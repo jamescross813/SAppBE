@@ -43,6 +43,6 @@ class ToDosController < ApplicationController
     private
     
     def todo_params
-        params.require(:todo).permit(:title, :project_id)
+        params.require(:todo).permit(:to_do, :do_date, :project_id)
     end
 end
