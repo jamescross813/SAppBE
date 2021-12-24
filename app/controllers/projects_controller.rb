@@ -23,7 +23,7 @@ class ProjectsController < ApplicationController
     def index
         projects = Project.all
         render json: projects,
-        except: [:create_at, :updated_at]
+        except: [:created_at, :updated_at]
     end
 
     def updated
@@ -31,7 +31,7 @@ class ProjectsController < ApplicationController
         project.update(project_params)
             if project.save
                 render json: project,
-                except: [:create_at, :updated_at]
+                except: [:created_at, :updated_at]
             else 
                 render json: {message: "Could not update at this time, please try again!"}     
         end
